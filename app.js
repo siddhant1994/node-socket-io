@@ -1,19 +1,19 @@
-var express = require('express');
+var express = require("express");
 var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var server = require("http").Server(app);
+var io = require("socket.io")(server);
 var request = require("request");
 
 let PORT = process.env.PORT || 3000;
 server.listen(PORT);
 
-app.use(express.static('public'))
+app.use(express.static("public"));
 
-app.get('/ping', function (req, res) {
+app.get("/ping", function (req, res) {
     return res.send("pong");
 });
 
-io.on('connection', function (socket) {
+io.on("connection", function (socket) {
     socket.on("user:join", (obj) => {
         socket.userName = obj.userName;
         io.emit("user:connected", obj);
@@ -25,15 +25,5 @@ io.on('connection', function (socket) {
 
     socket.on("disconnect", () => {
         io.emit("user:disconnect", socket.userName);
-    })
+    });
 });
-
-
-if (process.env.KEEP_CHECK == 'true') {
-
-    setInterval(() => {
-        request('https://guarded-plains-55107.herokuapp.com/ping', function (err, body, res) {
-            console.log(res)
-        })
-    }, 20000)
-}
