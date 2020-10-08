@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="./style.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="col-sm-12 col-sm-offset-4 frame col-xs-12">
+        <ul>
+        </ul>
+        <div>
+            <div class="msj-rta macro">
+                <div class="text text-r" style="background:whitesmoke !important">
+                    <input class="mytext" placeholder="Type a message" />
+                </div>
+
+            </div>
+            <div id="to-send" style="padding:10px;">
+                <span class="glyphicon glyphicon-share-alt"></span>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(".frame").css("height", window.innerHeight);
+    </script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
